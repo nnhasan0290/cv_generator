@@ -1,0 +1,47 @@
+.speedDial {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  transition: all 0.3s;
+  display: none;
+  @include miniPortraitTablet {
+    display: flex;
+  }
+
+  .speedDial__button {
+    padding: 0.5rem;
+    border-radius: $rounded-full;
+    height: 60px;
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $primary;
+    color: $text-white;
+    border: none;
+  }
+
+  .speedDial__button--transform{
+    transform: rotate(40deg);
+    transition: all 0.3s;
+  }
+
+  .speedDial__option {
+    display: block;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: $rounded-full;
+    transition: all 0.3s;
+    &:hover {
+      background-color: $secondary;
+      color: $text-white;
+    }
+  }
+}
