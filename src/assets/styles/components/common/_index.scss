@@ -1,0 +1,12 @@
+.common__button{
+    background-color: $bg-green-light;
+    padding: .6rem;
+    border-radius: $rounded-sm;
+    margin: 0 .5rem;
+    color: $text-white;
+    opacity: 0.9;
+    transition: all 0.3s;
+    &:hover{
+        opacity: 1;
+    }
+}
