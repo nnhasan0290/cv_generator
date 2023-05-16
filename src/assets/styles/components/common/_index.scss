@@ -26,3 +26,19 @@
         width: 100%;
     }
 }
+
+.iconBtn{
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: $rounded-full;
+    cursor: pointer;
+    transition: all 0.3s;
+    color: $secondary;
+    &:hover{
+        background-color: $secondary;
+        color: white;
+    }
+}
