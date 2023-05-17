@@ -2,6 +2,7 @@ import Header from "./components/Header";
 import "./assets/styles/_global.scss"
 import Resume from "./components/Resume/Resume";
 import SpeedDial from "./components/SpeedDial/SpeedDial";
+import Customize from "./components/Customize/Customize";
 
 const App = () => {
   return (
@@ -9,6 +10,7 @@ const App = () => {
       <Header />
       <Resume/>
       <SpeedDial/>
+      <Customize/>
     </div>
   );
 };

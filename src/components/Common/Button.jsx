@@ -1,10 +1,7 @@
-const Button = ({ children, type }) => {
-  const primary = "#007BFF";
-  const secondary = "#6C757D";
-  const bg = type === "primary" ? primary : secondary;
+const Button = ({ children, onClick, bg, isLoading }) => {
   return (
-    <button className="common__button" style={{ backgroundColor: bg }}>
-      {children}
+    <button disabled={isLoading} onClick={onClick} className="common__button" style={{ backgroundColor: bg ? bg : "gray" }}>
+      {!isLoading ? children : (<span className="common__button__loader"></span>)}
     </button>
   );
 };

@@ -6,10 +6,10 @@
   align-items: center;
   gap: 1rem;
   transition: all 0.3s;
-  display: none;
-  @include miniPortraitTablet {
-    display: flex;
-  }
+  display: flex;
+  // @include miniPortraitTablet {
+  //   display: flex;
+  // }
 
   .speedDial__button {
     padding: 0.5rem;

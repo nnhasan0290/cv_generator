@@ -1,3 +1,5 @@
+@import "./switch";
+
 .common__button{
     background-color: $bg-green-light;
     padding: .6rem;
@@ -6,8 +8,24 @@
     color: $text-white;
     opacity: 0.9;
     transition: all 0.3s;
+    border: none;
+    min-width: 80px;
+    min-height: 40px;
     &:hover{
         opacity: 1;
+    }
+    position: relative;
+    .common__button__loader{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 20px;
+        height: 20px;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        border-top-color: #fff;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
     }
 }
 
@@ -42,3 +60,20 @@
         color: white;
     }
 }
+
+.avatar{
+    .avatar__img{
+        height: 40px;
+        width: 40px;
+        border-radius: $rounded-full;
+    }
+}
+
+@keyframes spin {
+    0% {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
+  }
