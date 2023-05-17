@@ -9,10 +9,10 @@
         border-radius: $rounded-sm 0 0 $rounded-sm;
         cursor: pointer;
         transition: all 0.3s;
-        background-color: $bg-primary;
+        background-color: $primary-deep;
+        color: white;
         &:hover{
-            background-color: $primary;
-            color: white;
+          background-color: $primary;
         }
     }
 
@@ -24,7 +24,6 @@
         top: 0;
         right: 0;
         bottom: 0;
-        background-color: $bg-primary;
         animation: getDown 0.3s ease-in;
         z-index: 10010;
         box-sizing: border-box;
@@ -51,7 +50,7 @@
           padding-bottom: .5rem;
           position: sticky;
           top: 0;
-          background-color: $bg-primary;
+          backdrop-filter: blur(10px);
         }
         .canvas__section{
           display: flex;
@@ -149,10 +148,7 @@
       // background-color: $secondary;
       border: $border-2;
       border-radius: $rounded-sm;
-      &:hover{
-        color: white;
-        
-      }
+    
     }
    }
 }

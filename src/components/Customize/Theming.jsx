@@ -1,4 +1,7 @@
+import { GlobalSettingContext } from "../../utils/SettingContext"
+
 const Theming = () => {
+  const {state:{theme}, dispatch} = GlobalSettingContext()
     return(
         <div className="canvas__section">
             <h2>Theming</h2>
@@ -6,11 +9,11 @@ const Theming = () => {
               <span>mode</span>
               <div>
                 <label className="radio__input">
-                  <input type="radio" id="option1" name="options" />
+                  <input onClick={() => dispatch({type: "SWITCH_THEME"})} type="radio" id="option1" name="options" checked={theme === "dark"} />
                   Dark
                 </label>
                 <label className="radio__input">
-                  <input type="radio" id="option1" name="options" />
+                  <input onClick={() => dispatch({type: "SWITCH_THEME"})} type="radio" id="option1" name="options" checked={theme === "light"}/>
                   Light
                 </label>
               </div>

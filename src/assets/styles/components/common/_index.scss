@@ -6,13 +6,14 @@
     border-radius: $rounded-sm;
     margin: 0 .5rem;
     color: $text-white;
-    opacity: 0.9;
     transition: all 0.3s;
     border: none;
     min-width: 80px;
     min-height: 40px;
+    background-color: $primary-deep;
     &:hover{
         opacity: 1;
+        background-color: $primary;
     }
     position: relative;
     .common__button__loader{
