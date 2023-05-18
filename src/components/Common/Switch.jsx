@@ -1,4 +1,4 @@
-const Switch = () => {
+const Switch = ({checked, onChange}) => {
     //global contexts
     
     return (
@@ -8,6 +8,8 @@ const Switch = () => {
           <input
             className="filter__switch__checkbox"
             type="checkbox"
+            checked={checked}
+            onChange={onChange}
           />
           <span className="filter__switch__slider"></span>
         </label>

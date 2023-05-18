@@ -1,30 +1,25 @@
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import Switch from "../Common/Switch";
-
-const arra = [
-  {
-    id: "1",
-    content: "item one",
-  },
-  {
-    id: "2",
-    content: "item one",
-  },
-  {
-    id: "3",
-    content: "item one",
-  },
-  {
-    id: "4",
-    content: "item one",
-  },
-];
+import { GlobalSettingContext } from "../../utils/SettingContext";
 
 const Sections = () => {
+  const {
+    state: { sections },
+    dispatch,
+  } = GlobalSettingContext();
+
   return (
     <div className="resume__sections">
       <h2>Sections</h2>
-      <DragDropContext onDragEnd={() => console.log("drageend")}>
+      <DragDropContext
+        onDragEnd={({ source, destination }) => {
+          if (source.index === destination.index) return;
+          dispatch({
+            type: "UPDATE_DRAGEND",
+            payload: { source: source.index, destination: destination.index },
+          });
+        }}
+      >
         <Droppable droppableId="droppable__section">
           {(provided) => (
             <div
@@ -32,18 +27,26 @@ const Sections = () => {
               {...provided.droppableProps}
               className="section__items"
             >
-              {arra.map((each, i) => (
-                <Draggable key={each.id} draggableId={each.id} index={i} >
+              {sections.map((section, i) => (
+                <Draggable key={section.id} draggableId={section.id} index={i}>
                   {(provided) => (
                     <div
                       ref={provided.innerRef}
                       {...provided.dragHandleProps}
                       {...provided.draggableProps}
                       className="single__item"
-                      id={each.id}
+                      id={section.id}
                     >
-                      <span>Item One</span>
-                      <Switch />
+                      <span>{section.title}</span>
+                      <Switch
+                        onChange={() =>
+                          dispatch({
+                            type: "UPDATE_ACTIVATION",
+                            payload: { id: section.id },
+                          })
+                        }
+                        checked={section.activated}
+                      />
                     </div>
                   )}
                 </Draggable>

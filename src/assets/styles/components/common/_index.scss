@@ -32,18 +32,16 @@
 
 .section__head{
     display: flex;
-    justify-content: center;
-    font-size: $fs-large;
-    gap: .5rem;
-    margin-bottom: 1rem;
-
+    justify-content: space-between;
     text-transform: uppercase;
     .section__title{
+        font-size: $fs-large;
         white-space: nowrap;
     }
-    .section__divider{
-        width: 100%;
-    }
+    .section__btn{
+        display: flex;
+        gap: 0.5rem;
+      }
 }
 
 .iconBtn{

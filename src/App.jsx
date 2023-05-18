@@ -8,7 +8,7 @@ import { GlobalSettingContext } from "./utils/SettingContext";
 const App = () => {
   const {state:{color, bg}} = GlobalSettingContext();
   return (
-    <div style={{backgroundColor: bg, color}}>
+    <div style={{backgroundColor: bg, color, minHeight: "100vh"}}>
       <Header />
       <Resume/>
       <SpeedDial/>

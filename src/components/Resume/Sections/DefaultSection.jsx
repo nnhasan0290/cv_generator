@@ -1,9 +1,11 @@
 import { Draggable } from "react-beautiful-dnd";
 import SectionHead from "../../Common/SectionHead";
-import IconButton from "../../Common/IconButton";
 import { BsPen, BsTrash } from "react-icons/bs";
+import IconButton from "../../Common/IconButton";
+import { GlobalSettingContext } from "../../../utils/SettingContext";
 
-const DefaultSection = ({ title, details, id, index }) => {
+const DefaultSection = ({ title, id, index }) => {
+  const { dispatch } = GlobalSettingContext();
   return (
     <Draggable key={id} draggableId={id} index={index}>
       {(provided) => (
@@ -13,16 +15,26 @@ const DefaultSection = ({ title, details, id, index }) => {
           {...provided.draggableProps}
           {...provided.dragHandleProps}
         >
-          <SectionHead>{title}</SectionHead>
+          <div className="section__head">
+            <SectionHead>{title}</SectionHead>
+            <div className="section__btn">
+              <IconButton icon={<BsPen />} />
+              <IconButton
+                onClick={() => {
+                  dispatch({ type: "UPDATE_ACTIVATION", payload: { id: id } });
+                }}
+                icon={<BsTrash />}
+              />
+            </div>
+          </div>
           <div className="section__item">
             <div className="section__details">
-              {details.map((detail, i) => (
+              {/* {details.map((detail, i) => (
                 <p key={i}>{detail}</p>
-              ))}
-            </div>
-            <div className="section__btn">
-              <IconButton icon={<BsPen/>} />
-              <IconButton icon={<BsTrash/>} />
+              ))} */}
+              <p>section details</p>
+              <p>section details</p>
+              <p>section details</p>
             </div>
           </div>
         </div>

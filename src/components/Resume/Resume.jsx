@@ -1,32 +1,23 @@
 import Identity from "./Sections/Identity";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import DefaultSection from "./Sections/DefaultSection";
+import { GlobalSettingContext } from "../../utils/SettingContext";
 
-const arr = [
-  {
-    id: '1',
-    title: "Education",
-    details: ["subject one", "subject one", "subject one"],
-  },
-  {
-    id: '2',
-    title: "Experience",
-    details: ["subject one", "subject one", "subject one"],
-  },
-  {
-    id: '3',
-    title: "Skills",
-    details: ["subject one", "subject one", "subject one"],
-  },
-];
+
 
 const Resume = () => {
+  const {state:{sections}, dispatch} = GlobalSettingContext()
   return (
     <div className="bbb-container resume">
       <Identity />
       <DragDropContext
-        onDragEnd={() => {
-          console.log("dragend");
+         onDragEnd={({ source, destination }) => {
+           console.log(source, destination);
+          if (source.index === destination.index) return;
+          dispatch({
+            type: "UPDATE_ACTIVATED_DRAGEND",
+            payload: { source: source.index, destination: destination.index },
+          });
         }}
       >
         <Droppable droppableId="droppable">
@@ -36,13 +27,12 @@ const Resume = () => {
             ref={provided.innerRef}
               className="resume__details"
             >
-              {arr.map((each, index) => (
+              {sections.filter((each) => each.activated).map((section, index) => (
                 <DefaultSection
-                  key={each.id}
+                  key={section.id}
                   index={index}
-                  id={each.id}
-                  title={each.title}
-                  details={each.details}
+                  id={section.id}
+                  title={section.title}
                 />
               ))}
               
