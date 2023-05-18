@@ -5,11 +5,13 @@ const themeConfig = {
     theme: "dark",
     color: "#ffffffb3",
     bg: "#00040f",
+    font: "auto",
   },
   light: {
     theme: "light",
-    color: "black",
+    color: "#000",
     bg: "white",
+    font: "auto",
   },
 };
 
@@ -66,15 +68,22 @@ const reducer = (state, action) => {
     }
 
     case "UPDATE_ACTIVATED_DRAGEND": {
-       const newItems = [...state.sections];
-       const filtered = newItems.filter(each => each.activated);
-       
-       const sourceIndex = newItems.findIndex(each => each === filtered[action.payload.source])
-       const destinationIndex = newItems.findIndex(each => each === filtered[action.payload.destination])
+      const newItems = [...state.sections];
+      const filtered = newItems.filter((each) => each.activated);
 
-       const [removed] = newItems.splice(sourceIndex, 1);
-       newItems.splice(destinationIndex, 0, removed);
-       return { ...state, sections: newItems };
+      const sourceIndex = newItems.findIndex(
+        (each) => each === filtered[action.payload.source]
+      );
+      const destinationIndex = newItems.findIndex(
+        (each) => each === filtered[action.payload.destination]
+      );
+
+      const [removed] = newItems.splice(sourceIndex, 1);
+      newItems.splice(destinationIndex, 0, removed);
+      return { ...state, sections: newItems };
+    }
+    case "CHANGE_ITEM": {
+      return { ...state, [action.payload.property]: action.payload.value };
     }
   }
 };

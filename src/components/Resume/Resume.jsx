@@ -6,9 +6,9 @@ import { GlobalSettingContext } from "../../utils/SettingContext";
 
 
 const Resume = () => {
-  const {state:{sections}, dispatch} = GlobalSettingContext()
+  const {state:{sections, color, font}, dispatch} = GlobalSettingContext()
   return (
-    <div className="bbb-container resume">
+    <div className="bbb-container resume" style={{fontFamily: font, color: color}}>
       <Identity />
       <DragDropContext
          onDragEnd={({ source, destination }) => {

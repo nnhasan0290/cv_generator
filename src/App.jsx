@@ -6,9 +6,9 @@ import Customize from "./components/Customize/Customize";
 import { GlobalSettingContext } from "./utils/SettingContext";
 
 const App = () => {
-  const {state:{color, bg}} = GlobalSettingContext();
+  const {state:{ bg}} = GlobalSettingContext();
   return (
-    <div style={{backgroundColor: bg, color, minHeight: "100vh"}}>
+    <div style={{backgroundColor: bg, minHeight: "100vh"}}>
       <Header />
       <Resume/>
       <SpeedDial/>

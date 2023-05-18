@@ -1,44 +1,97 @@
-import { GlobalSettingContext } from "../../utils/SettingContext"
-
+import { GlobalSettingContext } from "../../utils/SettingContext";
+import {AiOutlineCheck} from "react-icons/ai"
+const fonts = [
+  "Auto",
+  "Lato, sans-serif",
+  "Poppins, sans-serif",
+  "Raleway, sans-serif",
+  "Roboto, sans-serif",
+  "monospace, monospace",
+];
 const Theming = () => {
-  const {state:{theme}, dispatch} = GlobalSettingContext()
-    return(
-        <div className="canvas__section">
-            <h2>Theming</h2>
-            <div className="canvas__sub">
-              <span>mode</span>
-              <div>
-                <label className="radio__input">
-                  <input onClick={() => dispatch({type: "SWITCH_THEME"})} type="radio" id="option1" name="options" checked={theme === "dark"} />
-                  Dark
-                </label>
-                <label className="radio__input">
-                  <input onClick={() => dispatch({type: "SWITCH_THEME"})} type="radio" id="option1" name="options" checked={theme === "light"}/>
-                  Light
-                </label>
-              </div>
-            </div>
-            <div className="canvas__sub">
-              <span>Primary Color</span>
-              <div>
-                <span>1</span>
-                <span>1</span>
-                <span>1</span>
-                <span>1</span>
-                <span>1</span>
-              </div>
-            </div>
-            <div className="canvas__sub">
-              <span>Font</span>
-              <select>
-                <option>option one</option>
-                <option>option one</option>
-                <option>option one</option>
-                <option>option one</option>
-              </select>
-            </div>
-          </div>
-    )
-}
+  const {
+    state: { theme, color: contextColor, font },
+    dispatch,
+  } = GlobalSettingContext();
+  return (
+    <div className="canvas__section">
+      <h2>Theming</h2>
+      <div className="canvas__sub">
+        <span>mode</span>
+        <div>
+          <label className="radio__input">
+            <input
+              onClick={() => dispatch({ type: "SWITCH_THEME" })}
+              type="radio"
+              id="option1"
+              name="options"
+              checked={theme === "dark"}
+            />
+            Dark
+          </label>
+          <label className="radio__input">
+            <input
+              onClick={() => dispatch({ type: "SWITCH_THEME" })}
+              type="radio"
+              id="option1"
+              name="options"
+              checked={theme === "light"}
+            />
+            Light
+          </label>
+        </div>
+      </div>
+      <div className="canvas__sub">
+        <span>Primary Color</span>
+        <div>
+          {[
+            "#D0021B",
+            "#000",
+            "#845328",
+            "#78c81f",
+            "#b40fd5",
+            "#4cd8b8",
+            "#ffff",
+            '#ffffffb3'
+          ].map((color, i) => (
+            <span
+              onClick={() =>
+                dispatch({
+                  type: "CHANGE_ITEM",
+                  payload: { property: "color", value: color },
+                })
+              }
+              key={i}
+              style={{ backgroundColor: color }}
+            >
+            {
+              contextColor === color && <AiOutlineCheck/>
+            }
 
-export default Theming
+            </span>
+          ))}
+        </div>
+      </div>
+      <div className="canvas__sub">
+        <span>Font</span>
+        <select
+          value={font}
+          onChange={(e) => {
+            dispatch({
+              type: "CHANGE_ITEM",
+              payload: { property: "font", value: e.target.value },
+            });
+          }}
+        >
+          {fonts.map((font, i) => (
+            <option key={i} value={font}>
+              {font}
+            </option>
+          ))}
+        </select>
+      </div>
+    </div>
+  );
+};
+
+export default Theming;
