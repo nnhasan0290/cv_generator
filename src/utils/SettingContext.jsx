@@ -20,25 +20,58 @@ const sections = [
     id: "1",
     activated: true,
     title: "Education",
-    position: 1,
+    formItems: [
+      { label: "school", type: "text" },
+      { label: "degree", type: "text" },
+      { lable: "field of study", type: "text" },
+      { label: "location", type: "text" },
+    ],
   },
   {
     id: "2",
     activated: true,
     title: "Experience",
-    position: 2,
+    formItems: [
+      { label: "position", type: "text" },
+      { label: "company name", type: "text" },
+      { label: "location", type: "text" },
+      { label: "description", type: "text" },
+    ],
   },
   {
     id: "3",
     activated: true,
     title: "Skills",
-    position: 3,
+    formItems: [
+      { label: "Skills", type: "text" },
+      {
+        label: "Years of experience",
+        type: "select",
+        options: [
+          "1 year",
+          "2 years",
+          "3 years",
+          "4 years",
+          "5 years",
+          "6 years",
+          "7 years",
+          "10+ years",
+        ],
+      },
+    ],
   },
   {
     id: "4",
     activated: false,
     title: "Soft Skills",
-    position: 4,
+    formItems: [
+      { label: "Skills", type: "text" },
+      {
+        label: "Years of experience",
+        type: "select",
+        options: ["1 year", "2 years", "3 years"],
+      },
+    ],
   },
 ];
 

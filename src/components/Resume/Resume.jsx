@@ -33,6 +33,7 @@ const Resume = () => {
                   index={index}
                   id={section.id}
                   title={section.title}
+                  formItems={section.formItems}
                 />
               ))}
               
