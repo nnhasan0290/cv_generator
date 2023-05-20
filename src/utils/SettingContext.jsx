@@ -1,4 +1,5 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useEffect, useReducer } from "react";
+import useLocalStorage from "./useLocalStorage";
 
 const themeConfig = {
   dark: {
@@ -23,9 +24,10 @@ const sections = [
     formItems: [
       { label: "school", type: "text" },
       { label: "degree", type: "text" },
-      { lable: "field of study", type: "text" },
+      { label: "field of study", type: "text" },
       { label: "location", type: "text" },
     ],
+    addedItems: [],
   },
   {
     id: "2",
@@ -37,6 +39,7 @@ const sections = [
       { label: "location", type: "text" },
       { label: "description", type: "text" },
     ],
+    addedItems: [],
   },
   {
     id: "3",
@@ -59,6 +62,7 @@ const sections = [
         ],
       },
     ],
+    addedItems: [],
   },
   {
     id: "4",
@@ -72,6 +76,7 @@ const sections = [
         options: ["1 year", "2 years", "3 years"],
       },
     ],
+    addedItems: [],
   },
 ];
 
@@ -85,6 +90,9 @@ const reducer = (state, action) => {
       } else {
         return { ...state, ...themeConfig.dark };
       }
+    case "LOCALSTORAGE_CHECK":
+      return { ...state, ...action.payload };
+
     case "UPDATE_ACTIVATION":
       [...state.sections].map((section) => {
         if (section.id === action.payload.id) {
@@ -118,6 +126,13 @@ const reducer = (state, action) => {
     case "CHANGE_ITEM": {
       return { ...state, [action.payload.property]: action.payload.value };
     }
+    case "UPDATE_SECTION": {
+      [...state.sections]
+        .find((section) => section.id === action.payload.id)
+        .addedItems.push(action.payload.values);
+
+      return { ...state };
+    }
   }
 };
 
@@ -125,6 +140,15 @@ const SettingContext = createContext();
 
 const ContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialSettings);
+  const [storedValue, setValue] = useLocalStorage("context", {});
+
+  useEffect(() => {
+    dispatch({ type: "LOCALSTORAGE_CHECK", payload: storedValue });
+  }, []);
+
+  useEffect(() => {
+  setValue(state);
+  },[state])
 
   return (
     <SettingContext.Provider value={{ state, dispatch }}>

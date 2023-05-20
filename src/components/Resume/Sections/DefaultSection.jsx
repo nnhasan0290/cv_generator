@@ -5,15 +5,18 @@ import IconButton from "../../Common/IconButton";
 import { GlobalSettingContext } from "../../../utils/SettingContext";
 import { useState } from "react";
 import DefaultForm from "./ DefaultForm";
+import Chip from "../../Common/Chip";
 
 const DefaultSection = ({ title, id, index, formItems }) => {
-  const { dispatch } = GlobalSettingContext();
+  const { state, dispatch } = GlobalSettingContext();
   const [showForm, setShowForm] = useState(false);
+  console.log(state);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setShowForm(false);
-  }
+    dispatch({type: "UPDATE_SECTION", payload: {id: id, values: {school: "high school"}}})
+  };
   return (
     <Draggable key={id} draggableId={id} index={index}>
       {(provided) => (
@@ -25,28 +28,33 @@ const DefaultSection = ({ title, id, index, formItems }) => {
         >
           <div className="section__head">
             <SectionHead>{title}</SectionHead>
-            <div className="section__btn">
-              <IconButton icon={<BsPen />} onClick={() => setShowForm(!showForm)} />
+            {/* <div className="section__btn">
+              <IconButton
+                icon={<BsPen />}
+                onClick={() => setShowForm(!showForm)}
+              />
               <IconButton
                 onClick={() => {
                   dispatch({ type: "UPDATE_ACTIVATION", payload: { id: id } });
                 }}
                 icon={<BsTrash />}
               />
-            </div>
+            </div> */}
           </div>
           <div className="section__item">
             {showForm ? (
-              <DefaultForm items={formItems} onSubmit={handleSubmit}/>
+              <DefaultForm onClose={() => setShowForm(false)} items={formItems} onSubmit={handleSubmit} />
             ) : (
-              <div className="section__details">
-                {/* {details.map((detail, i) => (
-                <p key={i}>{detail}</p>
-              ))} */}
-                <p>section details</p>
-                <p>section details</p>
-                <p>section details</p>
-              </div>
+              <>
+                <div>
+                  {/* <div className="section__details" onClick={() => setShowForm(true)}>
+                    <p>section details</p>
+                    <p>section details</p>
+                    <p>section details</p>
+                  </div> */}
+                </div>
+                <Chip onClick={() => setShowForm(true)} value={title} />
+              </>
             )}
           </div>
         </div>

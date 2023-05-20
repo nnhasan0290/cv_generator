@@ -21,24 +21,18 @@ const Identity = () => {
             { label: "Email address", type: "text" },
           ]}
           onSubmit={handleSubmit}
+          onClose={() => setEditMode(false)}
         />
       ) : (
-        <>
-          <div className="identity__head">
+        <div className="identity__details" onClick={() => setEditMode(true)}>
             <div className="identity__title">Name</div>
-            <IconButton
-              onClick={() => {
-                setEditMode(true);
-              }}
-              icon={<BsPen />}
-            />
-          </div>
+          
           <div>
             <p>Location</p>
             <p>Phone number</p>
             <p>Email Address</p>
           </div>
-        </>
+        </div>
       )}
     </div>
   );
