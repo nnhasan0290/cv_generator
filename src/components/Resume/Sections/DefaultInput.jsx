@@ -1,4 +1,7 @@
-const DefaultInput = ({ label, type, options }) => {
+import { useFormContext } from "react-hook-form";
+
+const DefaultInput = ({ label, type, options, name }) => {
+  const {register} = useFormContext()
   return (
     <div className="formItem">
       {type === "select" && (
@@ -6,7 +9,7 @@ const DefaultInput = ({ label, type, options }) => {
           <label className="formItem__label" htmlFor="">
             {label}
           </label>
-          <select className="formItem__input">
+          <select required {...register(name)} className="formItem__input">
             <option>-----</option>
             {options.map((option, i) => (
               <option key={i}>{option}</option>
@@ -19,7 +22,15 @@ const DefaultInput = ({ label, type, options }) => {
           <label className="formItem__label" htmlFor="">
             {label}
           </label>
-          <input className="formItem__input" type={type} />
+          <input required {...register(name)} className="formItem__input" type={type} />
+        </>
+      )}
+      {type === "textarea" && (
+        <>
+          <label className="formItem__label" htmlFor="">
+            {label}
+          </label>
+          <textarea required {...register(name)}  className="formItem__input"></textarea>
         </>
       )}
     </div>

@@ -22,10 +22,10 @@ const sections = [
     activated: true,
     title: "Education",
     formItems: [
-      { label: "school", type: "text" },
-      { label: "degree", type: "text" },
-      { label: "field of study", type: "text" },
-      { label: "location", type: "text" },
+      { label: "school", type: "text", name: "school" },
+      { label: "degree", type: "text", name: "degree" },
+      { label: "field of study", type: "text", name: "field" },
+      { label: "location", type: "text", name: "location" },
     ],
     addedItems: [],
   },
@@ -34,10 +34,10 @@ const sections = [
     activated: true,
     title: "Experience",
     formItems: [
-      { label: "position", type: "text" },
-      { label: "company name", type: "text" },
-      { label: "location", type: "text" },
-      { label: "description", type: "text" },
+      { label: "position", type: "text", name: "position" },
+      { label: "company name", type: "text", name: "company" },
+      { label: "location", type: "text", name: "location" },
+      { label: "description", type: "text", name: "description" },
     ],
     addedItems: [],
   },
@@ -46,7 +46,7 @@ const sections = [
     activated: true,
     title: "Skills",
     formItems: [
-      { label: "Skills", type: "text" },
+      { label: "Skill", type: "text", name: "skill" },
       {
         label: "Years of experience",
         type: "select",
@@ -60,6 +60,7 @@ const sections = [
           "7 years",
           "10+ years",
         ],
+        name: "experience",
       },
     ],
     addedItems: [],
@@ -68,14 +69,7 @@ const sections = [
     id: "4",
     activated: false,
     title: "Soft Skills",
-    formItems: [
-      { label: "Skills", type: "text" },
-      {
-        label: "Years of experience",
-        type: "select",
-        options: ["1 year", "2 years", "3 years"],
-      },
-    ],
+    formItems: [{ label: "Skills", type: "text", name: "skill" }],
     addedItems: [],
   },
 ];
@@ -133,6 +127,16 @@ const reducer = (state, action) => {
 
       return { ...state };
     }
+    case "DELETE_SECTION_VALUE": {
+      const find_section = [...state.sections].find(
+        (section) => section.id === action.payload.section_id
+      );
+      const value_index = find_section.addedItems.findIndex(
+        (value) => value.id === action.payload.value_id
+      );
+      find_section.addedItems.splice(value_index, 1);
+      return { ...state };
+    }
   }
 };
 
@@ -147,8 +151,8 @@ const ContextProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-  setValue(state);
-  },[state])
+    setValue(state);
+  }, [state]);
 
   return (
     <SettingContext.Provider value={{ state, dispatch }}>

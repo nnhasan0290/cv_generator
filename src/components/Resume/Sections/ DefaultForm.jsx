@@ -3,27 +3,61 @@ import Button from "../../Common/Button";
 import IconButton from "../../Common/IconButton";
 import DefaultInput from "./DefaultInput";
 import { RxCross1 } from "react-icons/rx";
+import { FormProvider, useForm } from "react-hook-form";
+import { GlobalSettingContext } from "../../../utils/SettingContext";
+import { v4 as uuidv4 } from "uuid";
 
-const DefaultForm = ({ onSubmit, items, onClose }) => {
+
+const allValuesEmpty = (obj) => {
+  for (let value of Object.values(obj)) {
+    if (value !== null && value !== undefined && value !== '') {
+      return false;
+    }
+  }
+  return true;
+}
+
+const DefaultForm = ({ items, onClose, section_id, initialVal={} }) => {
+  const methods = useForm({
+    defaultValues: initialVal
+  });
+
+  const { dispatch } = GlobalSettingContext();
+
+  const onSubmit = (values) => {
+    if(allValuesEmpty(values))return;
+    dispatch({
+      type: "UPDATE_SECTION",
+      payload: { id: section_id, values: { id: uuidv4(), ...values } },
+    });
+    onClose();
+  };
 
   return (
-    <form className="defaultForm" action="" onSubmit={onSubmit}>
-      {items.map((item, i) => (
-        <DefaultInput
-          key={i}
-          label={item.label}
-          type={item.type}
-          options={item.options}
-        />
-      ))}
-      <div className="form__btns">
-        <input className="defaultForm__submit" type="Submit" value="Save" />
-        <div className="form__btns__icon">
-          <IconButton onClick={onClose} icon={<RxCross1 />} />
-          <IconButton icon={<BsTrash />} />
+    <FormProvider {...methods}>
+      <form
+        className="defaultForm"
+        action=""
+        onSubmit={methods.handleSubmit(onSubmit)}
+      >
+        {items.map((item, i) => (
+          <DefaultInput
+            key={i}
+            label={item.label}
+            type={item.type}
+            options={item.options}
+            name={item.name}
+          />
+        ))}
+        <div className="form__btns">
+          <input className="defaultForm__submit" type="Submit" value="Save" />
+          <div className="form__btns__icon">
+            <IconButton onClick={onClose} icon={<RxCross1 />} />
+            <IconButton icon={<BsTrash />} />
+          </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </FormProvider>
   );
 };
 
