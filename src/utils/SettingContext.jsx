@@ -74,7 +74,17 @@ const sections = [
   },
 ];
 
-const initialSettings = { ...themeConfig.dark, sections };
+const initialSettings = {
+  ...themeConfig.dark,
+  sections,
+  identity: {
+    name: "Your Name",
+    location: "Your Location",
+    phone: "01521408381",
+    email: "sample@gmail.com",
+    summary: "Lorem Ipsum Dolor Sit Amet Consectetur Adipiscing Elit Sagittis Cum Iaculis, Potenti Parturient A Scelerisque Aptent Curae Nostra Mattis Ante Pellentesque, Aliquam Nibh Feugiat Senectus Nulla Nullam Convallis Accumsan Tempus. Eros Vulputate Cursus Posuere Odio Ligula Fringilla Pulvinar Curabitur Dapibus, Facilisi Ultricies Aptent Fames Class Gra",
+  },
+};
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -135,6 +145,10 @@ const reducer = (state, action) => {
         (value) => value.id === action.payload.value_id
       );
       find_section.addedItems.splice(value_index, 1);
+      return { ...state };
+    }
+    case "UPDATE_IDENTITY": {
+      state.identity = action.payload;
       return { ...state };
     }
   }

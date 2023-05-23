@@ -7,29 +7,42 @@ import { FormProvider, useForm } from "react-hook-form";
 import { GlobalSettingContext } from "../../../utils/SettingContext";
 import { v4 as uuidv4 } from "uuid";
 
-
 const allValuesEmpty = (obj) => {
   for (let value of Object.values(obj)) {
-    if (value !== null && value !== undefined && value !== '') {
+    if (value !== null && value !== undefined && value !== "") {
       return false;
     }
   }
   return true;
-}
+};
 
-const DefaultForm = ({ items, onClose, section_id, initialVal={} }) => {
+const DefaultForm = ({
+  items,
+  onClose,
+  section_id,
+  initialVal = {},
+  identity,
+}) => {
   const methods = useForm({
-    defaultValues: initialVal
+    defaultValues: initialVal,
   });
 
   const { dispatch } = GlobalSettingContext();
 
   const onSubmit = (values) => {
-    if(allValuesEmpty(values))return;
-    dispatch({
-      type: "UPDATE_SECTION",
-      payload: { id: section_id, values: { id: uuidv4(), ...values } },
-    });
+    if (allValuesEmpty(values)) return;
+    if (identity) {
+      dispatch({
+        type: "UPDATE_IDENTITY",
+        payload: values,
+      });
+    } else {
+      dispatch({
+        type: "UPDATE_SECTION",
+        payload: { id: section_id, values: { id: uuidv4(), ...values } },
+      });
+    }
+
     onClose();
   };
 
@@ -53,7 +66,7 @@ const DefaultForm = ({ items, onClose, section_id, initialVal={} }) => {
           <input className="defaultForm__submit" type="Submit" value="Save" />
           <div className="form__btns__icon">
             <IconButton onClick={onClose} icon={<RxCross1 />} />
-            <IconButton icon={<BsTrash />} />
+            {/* <IconButton icon={<BsTrash />} /> */}
           </div>
         </div>
       </form>
