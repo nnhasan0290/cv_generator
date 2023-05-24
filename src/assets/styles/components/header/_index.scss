@@ -4,6 +4,7 @@
   backdrop-filter: blur(10px);
   border-bottom: $border-1;
   color: gray;
+  z-index: 1;
 
   .heading__wrapper {
     display: flex;

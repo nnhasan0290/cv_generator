@@ -14,7 +14,7 @@ const SingleVal = ({ value, section_id }) => {
             {val !== "id" && (
               <>
                 {val === "skill" || val === "experience" ? (
-                  <span key={i} >{value[val]}</span>
+                  <span className="skill__item" key={i} >{value[val]}</span>
                 ) : (
                   <p key={i}>{value[val]}</p>
                 )}

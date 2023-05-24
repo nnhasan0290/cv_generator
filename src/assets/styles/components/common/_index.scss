@@ -31,8 +31,6 @@
 }
 
 .section__head{
-    display: flex;
-    justify-content: space-between;
     text-transform: uppercase;
     .section__title{
         font-size: $fs-large;

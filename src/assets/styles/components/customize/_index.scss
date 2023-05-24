@@ -106,7 +106,23 @@
            .canvas__templates{
             display: flex;
             justify-content: space-between;
-            flex-wrap: wrap;
+            // flex-wrap: wrap;
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            &::-webkit-scrollbar {
+              width: 0.3rem;
+              height: 10px;
+            }
+            
+            &::-webkit-scrollbar-thumb {
+              background-color: $secondary;
+              border-radius: $rounded-sm;
+            }
+            
+            &::-webkit-scrollbar-track {
+              background-color: transparent;
+            }
             .single__template{
               box-sizing: border-box;
               flex-basis: 50%;
@@ -117,12 +133,21 @@
               flex-direction: column;
               gap: 0.5rem;
               align-items: center;
+              min-width: 150px;
               img{
+                &:hover{
+                  border: $border-1;
+                }
+                cursor: pointer;
+                border: $border-2;
                 max-width: 100%;
                 min-height: 200px;
                 object-fit: cover;
+                object-position: left;
                 border-radius: $rounded-sm;
-                
+              }
+              img.active{
+                border: $border-1;
               }
             }
            }

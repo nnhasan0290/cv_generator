@@ -29,7 +29,7 @@ const Identity = () => {
           identity
         />
       ) : (
-        <div className="identity__details" >
+        <div className="identity__details" style={state.template.identityStyle}>
           <div className="identity_detail__inner">
             <div className="identity__title">{state.identity.name}</div>
             <div className="identity__values">

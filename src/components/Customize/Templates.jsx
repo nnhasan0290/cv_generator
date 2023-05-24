@@ -1,25 +1,32 @@
-const Templates = () => {
-    return(
-        <div className="canvas__section">
-            <h2>Templates</h2>
-            <div className="canvas__templates">
-              <div className="single__template">
-                <img
-                  src="https://media.istockphoto.com/id/1386479313/photo/happy-millennial-afro-american-business-woman-posing-isolated-on-white.jpg?s=1024x1024&w=is&k=20&c=5OK7djfD3cnNmQ-DR0iQzF-vmA-iTNN1TbuEyCG1DfA="
-                  alt=""
-                />
-                <span>Template name</span>
-              </div>
-              <div className="single__template">
-                <img
-                  src="https://media.istockphoto.com/id/1386479313/photo/happy-millennial-afro-american-business-woman-posing-isolated-on-white.jpg?s=1024x1024&w=is&k=20&c=5OK7djfD3cnNmQ-DR0iQzF-vmA-iTNN1TbuEyCG1DfA="
-                  alt=""
-                />
-                <span>Template name</span>
-              </div>
-            </div>
-          </div>
-    )
-}
+import images from "../../assets/imgs";
+import { GlobalSettingContext } from "../../utils/SettingContext";
 
-export default Templates
+const Templates = () => {
+  const {dispatch, state:{template}} = GlobalSettingContext();
+  return (
+    <div className="canvas__section">
+      <h2>Templates</h2>
+      <div className="canvas__templates">
+        <div className="single__template">
+          <img src={images.templates.cleanTemplate} alt=""  onClick={() => {
+            dispatch({type: "CHANGE_TEMPLATE", payload: "clean"})
+          }}/>
+          <span>Clean</span>
+        </div>
+        <div className="single__template">
+          <img
+            src={images.templates.modernTemplate}
+            alt=""
+            onClick={() => {
+              dispatch({type: "CHANGE_TEMPLATE", payload: "modern"})
+            }}
+          />
+          <span>Modern</span>
+        </div>
+        
+      </div>
+    </div>
+  );
+};
+
+export default Templates;

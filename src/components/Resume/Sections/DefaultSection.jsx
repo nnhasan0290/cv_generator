@@ -22,26 +22,30 @@ const DefaultSection = ({ title, id, index, formItems, values }) => {
           {...provided.draggableProps}
           {...provided.dragHandleProps}
         >
-          <div className="section__head">
-            <SectionHead>{title}</SectionHead>
-          </div>
-          <div className="section__item">
-            {showForm ? (
-              <DefaultForm
-                section_id={id}
-                onClose={() => setShowForm(false)}
-                items={formItems}
-              />
-            ) : (
-              <>
-                <div>
-                  {values.map((value, i) => {
-                    return <SingleVal section_id={id} value={value} key={i} />;
-                  })}
-                </div>
-                <Chip onClick={() => setShowForm(true)} value={title} />
-              </>
-            )}
+          <div className="section__inner" style={state.template.sectionStyle}>
+            <div className="section__head">
+              <SectionHead>{title}</SectionHead>
+            </div>
+            <div className="section__item">
+              {showForm ? (
+                <DefaultForm
+                  section_id={id}
+                  onClose={() => setShowForm(false)}
+                  items={formItems}
+                />
+              ) : (
+                <>
+                  <div>
+                    {values.map((value, i) => {
+                      return (
+                        <SingleVal section_id={id} value={value} key={i} />
+                      );
+                    })}
+                  </div>
+                  <Chip onClick={() => setShowForm(true)} value={title} />
+                </>
+              )}
+            </div>
           </div>
         </div>
       )}

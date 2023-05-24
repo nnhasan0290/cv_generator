@@ -30,7 +30,7 @@ const DefaultInput = ({ label, type, options, name }) => {
           <label className="formItem__label" htmlFor="">
             {label}
           </label>
-          <textarea required {...register(name)}  className="formItem__input"></textarea>
+          <textarea rows={4} required {...register(name)}  className="formItem__input"></textarea>
         </>
       )}
     </div>

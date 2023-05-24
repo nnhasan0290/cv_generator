@@ -1,0 +1,46 @@
+.defaultForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border: $border-2;
+    padding: 1rem;
+    border-radius: $rounded-sm;
+
+    .form__btns {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .form__btns__icon {
+        display: flex;
+        align-items: center;
+        gap: 0.2rem;
+      }
+      .defaultForm__submit {
+        width: 120px;
+        background-color: $primary-deep;
+        border: $border-1;
+        padding: 0.5rem;
+        border-radius: $rounded-sm;
+        color: white;
+        &:hover {
+          background-color: $primary;
+        }
+      }
+    }
+  }
+  .formItem {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    text-transform: capitalize;
+    .formItem__input {
+      background-color: transparent;
+      border: $border-1;
+      padding: 0.5rem;
+      border-radius: $rounded-sm;
+      color: gray;
+      &:focus {
+        border: 1px solid $primary;
+      }
+    }
+  }

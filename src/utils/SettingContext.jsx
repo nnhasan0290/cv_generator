@@ -74,6 +74,26 @@ const sections = [
   },
 ];
 
+const templates = [
+  {
+    name: "clean",
+    identityStyle: {
+      textAlign: "start",
+    },
+    sectionStyle: {
+    }
+  },
+  {
+    name: "modern",
+    identityStyle: {
+      textAlign: "center",
+    },
+    sectionStyle: {
+      display: "flex"
+    }
+  },
+];
+
 const initialSettings = {
   ...themeConfig.dark,
   sections,
@@ -82,8 +102,10 @@ const initialSettings = {
     location: "Your Location",
     phone: "01521408381",
     email: "sample@gmail.com",
-    summary: "Lorem Ipsum Dolor Sit Amet Consectetur Adipiscing Elit Sagittis Cum Iaculis, Potenti Parturient A Scelerisque Aptent Curae Nostra Mattis Ante Pellentesque, Aliquam Nibh Feugiat Senectus Nulla Nullam Convallis Accumsan Tempus. Eros Vulputate Cursus Posuere Odio Ligula Fringilla Pulvinar Curabitur Dapibus, Facilisi Ultricies Aptent Fames Class Gra",
+    summary:
+      "Lorem Ipsum Dolor Sit Amet Consectetur Adipiscing Elit Sagittis Cum Iaculis, Potenti Parturient A Scelerisque Aptent Curae Nostra Mattis Ante Pellentesque, Aliquam Nibh Feugiat Senectus Nulla Nullam Convallis Accumsan Tempus. Eros Vulputate Cursus Posuere Odio Ligula Fringilla Pulvinar Curabitur Dapibus, Facilisi Ultricies Aptent Fames Class Gra",
   },
+  template: templates[0]
 };
 
 const reducer = (state, action) => {
@@ -150,6 +172,10 @@ const reducer = (state, action) => {
     case "UPDATE_IDENTITY": {
       state.identity = action.payload;
       return { ...state };
+    }
+    case "CHANGE_TEMPLATE": {
+      state.template = templates.find((template) => template.name === action.payload);
+      return {...state};
     }
   }
 };
