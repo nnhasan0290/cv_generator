@@ -12,14 +12,14 @@ const SpeedDial = () => {
   return (
     <div className="speedDial" ref={speedDialRef}>
       {showOpt && (
-        <>
-          <button className="speedDial__option">
-            <BsEye />
-          </button>
+        <div className="speedDial__options">
           <button className="speedDial__option">
             <BsDownload />
           </button>
-        </>
+          <button className="speedDial__option">
+            <BsEye />
+          </button>
+        </div>
       )}
       <button
         onClick={() => setShowOpt(!showOpt)}

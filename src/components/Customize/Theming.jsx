@@ -1,3 +1,4 @@
+import { colors } from "../../assets/data/colors";
 import { GlobalSettingContext } from "../../utils/SettingContext";
 import {AiOutlineCheck} from "react-icons/ai"
 const fonts = [
@@ -44,16 +45,7 @@ const Theming = () => {
       <div className="canvas__sub">
         <span>Primary Color</span>
         <div>
-          {[
-            "#D0021B",
-            "#000",
-            "#845328",
-            "#78c81f",
-            "#b40fd5",
-            "#4cd8b8",
-            "#ffff",
-            '#ffffffb3'
-          ].map((color, i) => (
+          {colors.map((color, i) => (
             <span
               onClick={() =>
                 dispatch({

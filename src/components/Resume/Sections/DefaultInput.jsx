@@ -10,7 +10,6 @@ const DefaultInput = ({ label, type, options, name }) => {
             {label}
           </label>
           <select required {...register(name)} className="formItem__input">
-            <option>-----</option>
             {options.map((option, i) => (
               <option key={i}>{option}</option>
             ))}

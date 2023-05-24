@@ -27,9 +27,7 @@
       text-transform: capitalize;
       transition: all 0.3s;
       margin-bottom: 1rem;
-      .skill__item {
-        font-size: $fs-mid;
-      }
+     
       .skill__item:first-child::after {
         margin: 0 0.5rem;
         content: "--";

@@ -4,7 +4,7 @@
   right: 15px;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
   transition: all 0.3s;
   display: flex;
   // @include miniPortraitTablet {
@@ -14,34 +14,48 @@
   .speedDial__button {
     padding: 0.5rem;
     border-radius: $rounded-full;
-    height: 60px;
-    width: 60px;
+    height: 55px;
+    width: 55px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: $primary;
+    background-color: $primary-deep;
     color: $text-white;
     border: none;
+    transition: all 0.2s;
+    &:hover {
+      background-color: $primary;
+    }
   }
 
-  .speedDial__button--transform{
+  .speedDial__button--transform {
     transform: rotate(40deg);
     transition: all 0.3s;
   }
 
-  .speedDial__option {
-    display: block;
-    height: 40px;
-    width: 40px;
+  .speedDial__options {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    border-radius: $rounded-full;
-    transition: all 0.3s;
-    &:hover {
-      background-color: $secondary;
-      color: $text-white;
+    flex-direction: column;
+    gap: .5rem;
+    animation: $defaultAnimation;
+    transform-origin: bottom;
+    .speedDial__option {
+      display: block;
+      height: 35px;
+      width: 35px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: none;
+      border-radius: $rounded-full;
+      transition: all 0.3s;
+      background-color: lightgray;
+      &:hover {
+        background-color: $primary;
+        color: $text-white;
+      }
     }
   }
 }
+
+

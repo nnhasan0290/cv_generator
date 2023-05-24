@@ -25,7 +25,7 @@
         top: 0;
         right: 0;
         bottom: 0;
-        animation: getDown 0.3s ease-in;
+        animation: $defaultAnimation;
         z-index: 10010;
         box-sizing: border-box;
         border-radius: $rounded-sm 0 0 $rounded-sm;
@@ -118,6 +118,10 @@
             &::-webkit-scrollbar-thumb {
               background-color: $secondary;
               border-radius: $rounded-sm;
+              transition: all 0.3s;
+            }
+            &::-webkit-scrollbar-thumb:hover{
+              background-color: lightgray;
             }
             
             &::-webkit-scrollbar-track {
@@ -181,14 +185,3 @@
    }
 }
 
-@keyframes getDown {
-    0% {
-      transform: scaleY(0);
-    }
-    80% {
-      transform: scaleY(1.1);
-    }
-    100% {
-      transform: scaleY(1);
-    }
-  }
