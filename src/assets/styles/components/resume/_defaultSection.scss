@@ -3,39 +3,43 @@
   margin-bottom: 0.5rem;
   border-radius: $rounded-sm;
   border: $border-2;
-  .section__head {
-    width: 200px;
-      margin-bottom: 0.5rem;
-    }
-    &:hover{
-
-  }
-  .section__item {
-    flex-grow: 1;
-    .section__details {
-      cursor: pointer;
-    }
-    .section__details p {
-      margin: 0.3rem 0;
-    }
-  }
-
-  .sectionItem {
-    display: flex;
-    justify-content: space-between;
-    .sectionItem__single {
-      text-transform: capitalize;
-      transition: all 0.3s;
-      margin-bottom: 1rem;
+  .section__inner{
+    overflow: hidden;
+    width: 100%;
+   
+    .section__head {
+      width: 200px;
+        margin-bottom: 0.5rem;
+      }
      
-      .skill__item:first-child::after {
-        margin: 0 0.5rem;
-        content: "--";
+    .section__item {
+      flex-grow: 1;
+      .section__details {
+        cursor: pointer;
+      }
+      .section__details p {
+        margin: 0.3rem 0;
       }
     }
-    .section__btn {
+  
+    .sectionItem {
       display: flex;
-      gap: 0.5rem;
+      justify-content: space-between;
+      .sectionItem__single {
+        text-transform: capitalize;
+        transition: all 0.3s;
+        margin-bottom: 1rem;
+        overflow: hidden;
+        width: 100%;
+        .skill__item:first-child::after {
+          margin: 0 0.5rem;
+          content: "--";
+        }
+      }
+      .section__btn {
+        display: flex;
+        gap: 0.5rem;
+      }
     }
   }
 }

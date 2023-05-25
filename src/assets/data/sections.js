@@ -71,6 +71,68 @@ const sections = [
     formItems: [{ label: "Skills", type: "text", name: "skills" }],
     addedItems: [],
   },
+  {
+    id: "5",
+    activated: true,
+    title: "Links",
+    formItems: [
+      { label: "link", type: "text", name: "link" },
+    ],
+    addedItems: [],
+  },
+  {
+    id: "6",
+    activated: true,
+    title: "Award",
+    formItems: [
+      { label: "Award Title", type: "text", name: "title" },
+      { label: "Description", type: "textarea", name: "description" },
+    ],
+    addedItems: [],
+  },
+  {
+    id: "7",
+    activated: true,
+    title: "Certification",
+    formItems: [
+      { label: "Certificate License", type: "text", name: "license" },
+      { label: "Description", type: "textarea", name: "description" },
+    ],
+    addedItems: [],
+  },
+  {
+    id: "8",
+    activated: false,
+    title: "Groups",
+    formItems: [
+      { label: "Group name", type: "text", name: "group_name" },
+      { label: "Description", type: "textarea", name: "description" },
+    ],
+    addedItems: [],
+  },
+  {
+    id: "9",
+    activated: true,
+    title: "Publication",
+    formItems: [
+      { label: "publication", type: "text", name: "publication" },
+      { label: "url", type: "text", name: "url" },
+      { label: "Description", type: "textarea", name: "description" },
+    ],
+    addedItems: [],
+  },
+  {
+    id: "10",
+    activated: false,
+    title: "Patents",
+    formItems: [
+      { label: "Patent", type: "text", name: "patent" },
+      { label: "number", type: "text", name: "number" },
+      { label: "url", type: "text", name: "url" },
+      { label: "Description", type: "textarea", name: "description" },
+    ],
+    addedItems: [],
+  }
 ];
 
 export default sections;

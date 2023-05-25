@@ -72,5 +72,9 @@ export const reducer = (state, action) => {
       );
       return { ...state };
     }
+    case "SWITCH_PREVIEW": {
+      state.isPreview = !state.isPreview;
+      return {...state}
+    }
   }
 };

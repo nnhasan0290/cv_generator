@@ -17,7 +17,8 @@ const templates = [
         textAlign: "center",
       },
       sectionStyle: {
-        display: "flex"
+        display: "flex",
+        flexDirection: "row"
       }
     },
   ];

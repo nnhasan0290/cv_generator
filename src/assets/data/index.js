@@ -7,7 +7,8 @@ const settings = {
     ...themeConfig.dark,
     template: template[0],
     sections: sections,
-    identity: identity
+    identity: identity,
+    isPreview: false,
 }
 
 export default settings

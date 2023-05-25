@@ -1,32 +1,26 @@
-import { useRef, useState } from "react";
-import { BsDownload, BsEye, BsPlusLg } from "react-icons/bs";
-import useOutsideClickHandler from "../../utils/isClickedOnOutside";
+import { GlobalSettingContext } from "../../utils/SettingContext";
+import Button from "./../Common/Button";
 
 const SpeedDial = () => {
-  const [showOpt, setShowOpt] = useState(false);
-  const speedDialRef = useRef(null);
-  useOutsideClickHandler(speedDialRef, () => {
-    setShowOpt(false);
-  });
-
+  const {
+    dispatch,
+    state: { isPreview },
+  } = GlobalSettingContext();
   return (
-    <div className="speedDial" ref={speedDialRef}>
-      {showOpt && (
-        <div className="speedDial__options">
-          <button className="speedDial__option">
-            <BsDownload />
-          </button>
-          <button className="speedDial__option">
-            <BsEye />
-          </button>
-        </div>
-      )}
-      <button
-        onClick={() => setShowOpt(!showOpt)}
-        className={`speedDial__button ${showOpt && "speedDial__button--transform"}`}
+    <div className="speedDial">
+      <Button
+        onClick={() => {
+          dispatch({ type: "SWITCH_PREVIEW" });
+        }}
       >
-        <BsPlusLg size={22} />
-      </button>
+        {isPreview ? "Cancel Preview" : "Preview"}
+      </Button>
+      {isPreview && (
+        <>
+          <Button>PDF Download</Button>
+          <Button>Docs Download</Button>
+        </>
+      )}
     </div>
   );
 };

@@ -7,11 +7,15 @@ import { useState } from "react";
 import DefaultForm from "./ DefaultForm";
 import Chip from "../../Common/Chip";
 import SingleVal from "./SingleVal";
+import useMobileDetection from "../../../utils/isMobile";
 
 const DefaultSection = ({ title, id, index, formItems, values }) => {
-  const { state, dispatch } = GlobalSettingContext();
+  const { state } = GlobalSettingContext();
   const [showForm, setShowForm] = useState(false);
-  console.log(state);
+
+  const isMobile = useMobileDetection();
+
+  const style = isMobile ? {} : { ...state.template.sectionStyle };
 
   return (
     <Draggable key={id} draggableId={id} index={index}>
@@ -22,7 +26,7 @@ const DefaultSection = ({ title, id, index, formItems, values }) => {
           {...provided.draggableProps}
           {...provided.dragHandleProps}
         >
-          <div className="section__inner" style={state.template.sectionStyle}>
+          <div className="section__inner" style={style}>
             <div className="section__head">
               <SectionHead>{title}</SectionHead>
             </div>

@@ -7,55 +7,56 @@
   gap: 0.5rem;
   transition: all 0.3s;
   display: flex;
+  z-index: 2;
   // @include miniPortraitTablet {
   //   display: flex;
   // }
 
-  .speedDial__button {
-    padding: 0.5rem;
-    border-radius: $rounded-full;
-    height: 55px;
-    width: 55px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: $primary-deep;
-    color: $text-white;
-    border: none;
-    transition: all 0.2s;
-    &:hover {
-      background-color: $primary;
-    }
-  }
+  // .speedDial__button {
+  //   padding: 0.5rem;
+  //   border-radius: $rounded-full;
+  //   height: 55px;
+  //   width: 55px;
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  //   background-color: $primary-deep;
+  //   color: $text-white;
+  //   border: none;
+  //   transition: all 0.2s;
+  //   &:hover {
+  //     background-color: $primary;
+  //   }
+  // }
 
-  .speedDial__button--transform {
-    transform: rotate(40deg);
-    transition: all 0.3s;
-  }
+  // .speedDial__button--transform {
+  //   transform: rotate(40deg);
+  //   transition: all 0.3s;
+  // }
 
-  .speedDial__options {
-    display: flex;
-    flex-direction: column;
-    gap: .5rem;
-    animation: $defaultAnimation;
-    transform-origin: bottom;
-    .speedDial__option {
-      display: block;
-      height: 35px;
-      width: 35px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: none;
-      border-radius: $rounded-full;
-      transition: all 0.3s;
-      background-color: lightgray;
-      &:hover {
-        background-color: $primary;
-        color: $text-white;
-      }
-    }
-  }
+  // .speedDial__options {
+  //   display: flex;
+  //   flex-direction: column;
+  //   gap: .5rem;
+  //   animation: $defaultAnimation;
+  //   transform-origin: bottom;
+  //   .speedDial__option {
+  //     display: block;
+  //     height: 35px;
+  //     width: 35px;
+  //     display: flex;
+  //     align-items: center;
+  //     justify-content: center;
+  //     border: none;
+  //     border-radius: $rounded-full;
+  //     transition: all 0.3s;
+  //     background-color: lightgray;
+  //     &:hover {
+  //       background-color: $primary;
+  //       color: $text-white;
+  //     }
+  //   }
+  // }
 }
 
 
