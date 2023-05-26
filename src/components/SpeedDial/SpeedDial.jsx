@@ -12,7 +12,7 @@ const SpeedDial = () => {
     <div className="speedDial">
       <Button
         onClick={() => {
-          isAuthenticated
+          isAuthenticated && !state.isPreview
             ? dispatch({ type: "SWITCH_PREVIEW" })
             : toast.error("Please Login to Preview");
         }}
