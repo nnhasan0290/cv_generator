@@ -6,6 +6,7 @@ const Templates = () => {
   return (
     <div className="canvas__section">
       <h2>Templates</h2>
+
       <div className="canvas__templates">
         {
           templates.map((template, index) => (

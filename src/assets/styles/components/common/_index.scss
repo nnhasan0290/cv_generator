@@ -1,92 +1,94 @@
 @import "./switch";
 
-.common__button{
-    background-color: $bg-green-light;
-    padding: .6rem;
-    border-radius: $rounded-sm;
-    margin: 0 .5rem;
+.common__button {
+  background-color: $bg-green-light;
+  padding: 0.6rem;
+  border-radius: $rounded-sm;
+  margin: 0 0.5rem;
+  color: $text-white;
+  transition: all 0.3s;
+  border: none;
+  min-width: 80px;
+  min-height: 40px;
+  background-color: $primary-deep;
+  a {
     color: $text-white;
-    transition: all 0.3s;
-    border: none;
-    min-width: 80px;
-    min-height: 40px;
-    background-color: $primary-deep;
-    &:hover{
-        opacity: 1;
-        background-color: $primary;
-    }
-    position: relative;
-    .common__button__loader{
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 20px;
-        height: 20px;
-        border: 2px solid rgba(255, 255, 255, 0.2);
-        border-top-color: #fff;
-        border-radius: 50%;
-        animation: spin 1s linear infinite;
-    }
+  }
+  &:hover {
+    opacity: 1;
+    background-color: $primary;
+  }
+  position: relative;
+  .common__button__loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
 }
 
-.section__head{
-    text-transform: uppercase;
-    .section__title{
-        font-size: $fs-large;
-        white-space: nowrap;
-    }
-    .section__btn{
-        display: flex;
-        gap: 0.5rem;
-      }
-}
-
-.iconBtn{
-    height: 30px;
-    width: 30px;
+.section__head {
+  text-transform: uppercase;
+  .section__title {
+    font-size: $fs-large;
+    white-space: nowrap;
+  }
+  .section__btn {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    gap: 0.5rem;
+  }
+}
+
+.iconBtn {
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: $rounded-full;
+  cursor: pointer;
+  transition: all 0.3s;
+  color: $secondary;
+  &:hover {
+    background-color: $secondary;
+    color: white;
+  }
+}
+
+.avatar {
+  .avatar__img {
+    height: 40px;
+    width: 40px;
     border-radius: $rounded-full;
-    cursor: pointer;
-    transition: all 0.3s;
-    color: $secondary;
-    &:hover{
-        background-color: $secondary;
-        color: white;
-    }
+  }
 }
 
-.avatar{
-    .avatar__img{
-        height: 40px;
-        width: 40px;
-        border-radius: $rounded-full;
-    }
+.chip {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  color: $primary-deep;
+  cursor: pointer;
+  margin: 0.5rem 0;
+  padding: 0.5rem 0;
+  transition: all 0.3s;
+  width: 200px;
+  &:hover {
+    color: $primary;
+  }
 }
-
-.chip{
-    display: flex;
-    gap: .5rem;
-    align-items: center;
-    color: $primary-deep;
-    cursor: pointer;
-    margin: .5rem 0;
-    padding: .5rem 0;
-    transition: all 0.3s;
-    width: 200px;
-    &:hover{
-        color: $primary;
-    }
-}
-
 
 @keyframes spin {
-    0% {
-      transform: translate(-50%, -50%) rotate(0deg);
-    }
-    100% {
-      transform: translate(-50%, -50%) rotate(360deg);
-    }
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
   }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}

@@ -4,9 +4,7 @@ import {
   View,
   Document,
   StyleSheet,
-  PDFViewer,
 } from "@react-pdf/renderer";
-import { GlobalSettingContext } from "../../utils/SettingContext";
 
 // Create styles
 const styles = StyleSheet.create({
@@ -20,14 +18,14 @@ const styles = StyleSheet.create({
   },
   section: {
     margin: 10,
-    fontSize: "16px",
+    fontSize: "15px",
     alignSelf: "flex-start",
-    
   },
   heading: {
     fontSize: "24px",
     fontWeight: "bold",
     marginBottom: "8px",
+    textTransform: "uppercase",
   },
   summary: {
     marginTop: "8px",
@@ -38,66 +36,66 @@ const styles = StyleSheet.create({
   },
   secTitle: {
     marginBottom: "5px",
-    fontSize: "21px",
+    fontSize: "18px",
     width: "150px",
+    textTransform: "uppercase",
   },
-  sectionWrap : {
-    maxWidth: "70%"
-  }
+  sectionWrap: {
+    maxWidth: "70%",
+    textTransform: "capitalize",
+  },
 });
 
 // Create Document Component
-const MyDocument = () => {
-  const { state } = GlobalSettingContext();
+const PdfDocument = ({state}) => {
+  const sectionWrapStyle =
+    state.template.name === "clean" ? { maxWidth: "100%" } : {};
   return (
-    <PDFViewer
-      style={{
-        position: "fixed",
-        width: "100vw",
-        top: 0,
-        zIndex: "1",
-        height: "100vh",
-      }}
-    >
-      <Document>
-        <Page size="A4" style={{...styles.page, color: state.color, backgroundColor: state.bg}}>
-          <View style={{...styles.identity, ...state.template.identityStyle}}>
-            <Text style={styles.heading}>{state.identity.name}</Text>
-            <Text>{state.identity.location}</Text>
-            <Text>{state.identity.phone}</Text>
-            <Text>{state.identity.email}</Text>
-            <Text style={styles.summary}>{state.identity.summary}</Text>
-          </View>
-          {state.sections
-            .filter((each) => each.activated === true)
-            .map((section) => {
-              return (
-                <View
-                  style={{ ...styles.section, ...state.template.sectionStyle }}
-                >
-                  <View>
-                    <Text style={styles.secTitle}>{section.title}</Text>
-                  </View>
-                  <View style={styles.sectionWrap}>
-                    {section.addedItems.map((item) => {
-                      return (
-                        <View style={styles.singleSec}>
-                          {Object.keys(item)
-                            .filter((each) => each !== "id")
-                            .map((val, i) => (
-                              <Text key={i}>{item[val]}</Text>
-                            ))}
-                        </View>
-                      );
-                    })}
-                  </View>
+    <Document>
+      <Page
+        size="A4"
+        style={{
+          ...styles.page,
+          color: state.color,
+          backgroundColor: state.bg,
+        }}
+      >
+        <View style={{ ...styles.identity, ...state.template.identityStyle }}>
+          <Text style={styles.heading}>{state.identity.name}</Text>
+          <Text>{state.identity.location}</Text>
+          <Text>{state.identity.phone}</Text>
+          <Text>{state.identity.email}</Text>
+          <Text style={styles.summary}>{state.identity.summary}</Text>
+        </View>
+        {state.sections
+          .filter((each) => each.activated === true)
+          .map((section) => {
+            return (
+              <View
+                style={{ ...styles.section, ...state.template.sectionStyle }}
+              >
+                <View>
+                  <Text style={styles.secTitle}>{section.title}</Text>
                 </View>
-              );
-            })}
-        </Page>
-      </Document>
-    </PDFViewer>
+                <View style={{ ...styles.sectionWrap, ...sectionWrapStyle }}>
+                  {section.addedItems.map((item) => {
+                    return (
+                      <View style={styles.singleSec}>
+                        {Object.keys(item)
+                          .filter((each) => each !== "id")
+                          .map((val, i) => (
+                            <Text key={i}>{item[val]}</Text>
+                          ))}
+                      </View>
+                    );
+                  })}
+                </View>
+              </View>
+            );
+          })}
+      </Page>
+    </Document>
   );
 };
 
-export default MyDocument;
+export default PdfDocument;

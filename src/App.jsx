@@ -4,7 +4,7 @@ import Resume from "./components/Resume/Resume";
 import SpeedDial from "./components/SpeedDial/SpeedDial";
 import Customize from "./components/Customize/Customize";
 import { GlobalSettingContext } from "./utils/SettingContext";
-import MyDocument from "./components/pdf/Pdf";
+import PdfPreview from "./components/pdf/Preview";
 
 const App = () => {
   const {
@@ -21,7 +21,7 @@ const App = () => {
         </>
       )}
       <SpeedDial />
-      {isPreview && <MyDocument template={template} />}
+      {isPreview && <PdfPreview />}
     </div>
   );
 };

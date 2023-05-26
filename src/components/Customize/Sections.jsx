@@ -10,7 +10,10 @@ const Sections = () => {
 
   return (
     <div className="resume__sections">
-      <h2>Sections</h2>
+      <div className="resume__sec__head">
+        <h2>Sections</h2>
+        <span>(Drag and drop to organize sections)</span>
+      </div>
       <DragDropContext
         onDragEnd={({ source, destination }) => {
           if (source.index === destination.index) return;

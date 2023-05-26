@@ -10,17 +10,17 @@ const SingleVal = ({ value, section_id }) => {
     <div className="sectionItem">
       <div className="sectionItem__single">
         {Object.keys(value).map((val, i) => (
-          <div key={i}>
+          <span className="each_skill" key={i}>
             {val !== "id" && (
               <>
                 {val === "skill" || val === "experience" ? (
-                  <span  className="skill__item" >{value[val]}</span>
+                  <span  className={`${val === "skill" && "skill__item"}`} >{value[val]}</span>
                 ) : (
                   <p >{value[val]}</p>
                 )}
               </>
             )}
-          </div>
+          </span>
         ))}
       </div>
       <div className="section__btn">

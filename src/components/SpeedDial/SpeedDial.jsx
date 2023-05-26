@@ -1,11 +1,10 @@
+import { PDFDownloadLink } from "@react-pdf/renderer";
 import { GlobalSettingContext } from "../../utils/SettingContext";
 import Button from "./../Common/Button";
+import PdfDocument from "../pdf/Pdf";
 
 const SpeedDial = () => {
-  const {
-    dispatch,
-    state: { isPreview },
-  } = GlobalSettingContext();
+  const { dispatch, state } = GlobalSettingContext();
   return (
     <div className="speedDial">
       <Button
@@ -13,12 +12,20 @@ const SpeedDial = () => {
           dispatch({ type: "SWITCH_PREVIEW" });
         }}
       >
-        {isPreview ? "Cancel Preview" : "Preview"}
+        {state.isPreview ? "Cancel Preview" : "Preview"}
       </Button>
-      {isPreview && (
+      {state.isPreview && (
         <>
-          <Button>PDF Download</Button>
-          <Button>Docs Download</Button>
+          <Button>
+            <PDFDownloadLink
+              document={<PdfDocument state={state} />}
+              fileName="resume.pdf"
+            >
+              {({ loading }) =>
+                loading ? "Loading document..." : "Download PDF"
+              }
+            </PDFDownloadLink>
+          </Button>
         </>
       )}
     </div>
