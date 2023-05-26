@@ -1,7 +1,11 @@
-const Button = ({ children, onClick, isLoading, color }) => {
+const Button = ({ children, onClick, color }) => {
   return (
-    <button style={{backgroundColor: color}} disabled={isLoading} onClick={onClick} className="common__button" >
-     {children}
+    <button
+      style={{ backgroundColor: color }}
+      onClick={onClick}
+      className="common__button"
+    >
+      {children}
     </button>
   );
 };

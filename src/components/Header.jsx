@@ -8,7 +8,7 @@ import useOutsideClickHandler from "../utils/isClickedOnOutside";
 import { GlobalSettingContext } from "../utils/SettingContext";
 
 const Header = () => {
-  const { loginWithRedirect, logout, user, isAuthenticated, isLoading } =
+  const { loginWithRedirect, logout, user, isAuthenticated } =
     useAuth0();
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownRef = useRef(null);
@@ -74,7 +74,6 @@ const Header = () => {
             <Button
               onClick={() => loginWithRedirect()}
               type="primary"
-              isLoading={isLoading}
             >
               Login
             </Button>
