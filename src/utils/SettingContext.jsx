@@ -2,12 +2,14 @@ import { createContext, useContext, useEffect, useReducer } from "react";
 import useLocalStorage from "./useLocalStorage";
 import settings from "../assets/data";
 import { reducer } from "./reducer";
+import useMobileDetection from "./isMobile";
 
 
 const SettingContext = createContext();
 
 const ContextProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, settings);
+  const isMobile = useMobileDetection();
+  const [state, dispatch] = useReducer(reducer, {...settings, isMobile});
   const [storedValue, setValue] = useLocalStorage("context", {});
 
   useEffect(() => {

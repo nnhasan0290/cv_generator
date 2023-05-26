@@ -1,21 +1,17 @@
 import { Draggable } from "react-beautiful-dnd";
 import SectionHead from "../../Common/SectionHead";
-import { BsPen, BsTrash } from "react-icons/bs";
-import IconButton from "../../Common/IconButton";
 import { GlobalSettingContext } from "../../../utils/SettingContext";
 import { useState } from "react";
 import DefaultForm from "./ DefaultForm";
 import Chip from "../../Common/Chip";
 import SingleVal from "./SingleVal";
-import useMobileDetection from "../../../utils/isMobile";
 
 const DefaultSection = ({ title, id, index, formItems, values }) => {
   const { state } = GlobalSettingContext();
   const [showForm, setShowForm] = useState(false);
 
-  const isMobile = useMobileDetection();
 
-  const style = isMobile ? {} : { ...state.template.sectionStyle };
+  const style = state.isMobile ? {} : { ...state.template.sectionStyle };
 
   return (
     <Draggable key={id} draggableId={id} index={index}>

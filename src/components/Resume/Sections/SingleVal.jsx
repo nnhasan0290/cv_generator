@@ -1,7 +1,5 @@
-import { BsPen, BsTrash } from "react-icons/bs";
+import { BsTrash } from "react-icons/bs";
 import IconButton from "../../Common/IconButton";
-import { useState } from "react";
-import DefaultForm from "./ DefaultForm";
 import { GlobalSettingContext } from "../../../utils/SettingContext";
 
 const SingleVal = ({ value, section_id }) => {
