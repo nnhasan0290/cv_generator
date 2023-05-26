@@ -5,6 +5,7 @@ import SpeedDial from "./components/SpeedDial/SpeedDial";
 import Customize from "./components/Customize/Customize";
 import { GlobalSettingContext } from "./utils/SettingContext";
 import PdfPreview from "./components/pdf/Preview";
+import {Toaster} from "react-hot-toast";
 
 const App = () => {
   const {
@@ -21,6 +22,7 @@ const App = () => {
         </>
       )}
       <SpeedDial />
+      <Toaster/>
       {isPreview && <PdfPreview />}
     </div>
   );

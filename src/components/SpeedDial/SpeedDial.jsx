@@ -2,14 +2,19 @@ import { PDFDownloadLink } from "@react-pdf/renderer";
 import { GlobalSettingContext } from "../../utils/SettingContext";
 import Button from "./../Common/Button";
 import PdfDocument from "../pdf/Pdf";
+import { useAuth0 } from "@auth0/auth0-react";
+import { toast } from "react-hot-toast";
 
 const SpeedDial = () => {
   const { dispatch, state } = GlobalSettingContext();
+  const { isAuthenticated } = useAuth0();
   return (
     <div className="speedDial">
       <Button
         onClick={() => {
-          dispatch({ type: "SWITCH_PREVIEW" });
+          isAuthenticated
+            ? dispatch({ type: "SWITCH_PREVIEW" })
+            : toast.error("Please Login to Preview");
         }}
       >
         {state.isPreview ? "Cancel Preview" : "Preview"}
