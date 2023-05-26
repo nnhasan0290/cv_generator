@@ -10,15 +10,27 @@ const SpeedDial = () => {
   const { isAuthenticated } = useAuth0();
   return (
     <div className="speedDial">
-      <Button
-        onClick={() => {
-          isAuthenticated && !state.isPreview
-            ? dispatch({ type: "SWITCH_PREVIEW" })
-            : toast.error("Please Login to Preview");
-        }}
-      >
-        {state.isPreview ? "Cancel Preview" : "Preview"}
-      </Button>
+      {state.isPreview ? (
+        <Button
+          onClick={() => {
+            dispatch({ type: "SWITCH_PREVIEW" });
+          }}
+        >
+          Cancel Preview
+        </Button>
+      ) : (
+        <Button
+          onClick={() => {
+            if (isAuthenticated) {
+              dispatch({ type: "SWITCH_PREVIEW" });
+            } else {
+              toast.error("Please Login to Preview");
+            }
+          }}
+        >
+          {"Preview"}
+        </Button>
+      )}
       {state.isPreview && (
         <>
           <Button>
