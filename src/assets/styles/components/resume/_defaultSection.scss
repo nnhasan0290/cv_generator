@@ -3,15 +3,16 @@
   margin-bottom: 0.5rem;
   border-radius: $rounded-sm;
   border: $border-2;
-  .section__inner{
+
+  .section__inner {
     overflow: hidden;
     width: 100%;
-   
+
     .section__head {
       width: 200px;
-        margin-bottom: 0.5rem;
-      }
-     
+      margin-bottom: 0.5rem;
+    }
+
     .section__item {
       flex-grow: 1;
       .section__details {
@@ -21,7 +22,7 @@
         margin: 0.3rem 0;
       }
     }
-  
+
     .sectionItem {
       display: flex;
       justify-content: space-between;
@@ -31,15 +32,21 @@
         margin-bottom: 1rem;
         overflow: hidden;
         width: 100%;
-        .skill__item::after{
-            margin: 0 0.5rem;
-            content: "--";
+        .skill__item::after {
+          margin: 0 0.5rem;
+          content: "--";
         }
       }
       .section__btn {
         display: flex;
         gap: 0.5rem;
       }
+    }
+  }
+  .section__inner.modern {
+    display: flex;
+    @include miniPortraitTablet{
+      display: block;
     }
   }
 }

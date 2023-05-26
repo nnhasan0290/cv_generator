@@ -10,9 +10,6 @@ const DefaultSection = ({ title, id, index, formItems, values }) => {
   const { state } = GlobalSettingContext();
   const [showForm, setShowForm] = useState(false);
 
-
-  const style = state.isMobile ? {} : { ...state.template.sectionStyle };
-
   return (
     <Draggable key={id} draggableId={id} index={index}>
       {(provided) => (
@@ -22,7 +19,7 @@ const DefaultSection = ({ title, id, index, formItems, values }) => {
           {...provided.draggableProps}
           {...provided.dragHandleProps}
         >
-          <div className="section__inner" style={style}>
+          <div className={`section__inner ${state.template.name}`}>
             <div className="section__head">
               <SectionHead>{title}</SectionHead>
             </div>
